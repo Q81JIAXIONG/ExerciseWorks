@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .warp {
+            width: 100%;
+            max-width: 1200px;
+            background-color: #ddd;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .block {
+            width: 280px;
+            height: 280px;
+            margin: 15px;
+            padding: 20px;
+        }
+        .tableblock {
+            border-radius: 100px 0px 40px 0px;
+            display: grid;
+            grid-template-columns: 150px 150px;
+            grid-template-rows: 50px 50px 50px 50px 50px 50px;
+            grid-template-areas:
+            "main m4"
+            "main m5"
+            "main m6"
+            "m1 m7"
+            "m2 m8"
+            "m3 m9";
+            background-color: rgb(250, 248, 248);
+        }
+        .mainblock {
+            display: flex;
+            justify-content: center;
+            align-content: space-between;
+            flex-wrap: wrap;
+        }
+        .mianitem {
+            grid-area: main;
+            display: grid;
+            align-content: center;
+            justify-content: center;
+            font-size: 120px;
+            color: rgb(8, 11, 189);
+            font-weight: bold;
+        }
+        .multiplier1{
+            grid-area: m1;
+        }
+        .multiplier2{
+            grid-area: m2;
+        }
+        .multiplier3{
+            grid-area: m3;
+        }
+        .calculationitem {
+            font-size: 28px;
+            padding: 0 10px 0 10px;
+            color: rgb(8, 11, 189);
+        }
+        .title {
+            display: inline-block;
+            width: 100%;
+        }
+        .titleline {
+            background-color: rgb(8, 11, 189);
+            height: 2px;
+            width: 80%;
+            display: inline-block;
+        }
+        p {
+            text-align: center;
+            color: rgb(8, 11, 189);
+        }
+        .maintitle {
+            font-size: 48px;
+        }
+        .subheadings {
+            font-size: 24px;
+        }
+        .titleline {
+            position: relative;
+        }
+        .titleline::before {
+            content: 'O';
+            color: rgb(8, 11, 189);
+            position: absolute;
+            left: -50px;
+            top: -12px;
+            font-size: 24px;
+        }
+        .titleline::after {
+            content: 'O';
+            color: rgb(8, 11, 189);
+            position: absolute;
+            right: -50px;
+            top: -12px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="warp">
+        <div class="block mainblock">
+            <div class="titleline"></div>
+            <div class="title">
+                <p class="maintitle">九九乘法表</p>
+                <p class="subheadings">MULTIPLICATION CHART</p>
+            </div>
+            <div class="titleline"></div>
+        </div>
+    </div>
+</body>
+<script>
+    ; (function () {
+        let fragment = document.createDocumentFragment();
+        let node;
+        for (let i = 2; i < 10; i++) {
+            node=document.createElement('div');
+            node.classList.add('block');
+            node.classList.add('tableblock')
+            document.querySelector('.warp').appendChild(node);
+            for (let j = 0; j < 10; j++) {
+                node=document.createElement('span');
+                if(j===0){
+                    node.classList.add('mianitem');
+                    node.textContent=i;
+                }
+                else{
+                    node.classList.add('calculationitem');
+                    node.classList.add(`multiplier${j}`);
+                    node.textContent = `${i} x ${j} = ${i*j}`;
+                }
+                fragment.appendChild(node);
+            }
+            document.querySelector('.warp').lastChild.appendChild(fragment);
+            console.log();
+        }
+    })()
+</script>
+
+</html>
