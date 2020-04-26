@@ -1,3 +1,3 @@
 # ExerciseWorks
 
-[google](https://www.google.com/) 
+[MultiplicationTable](https://q81jiaxiong.github.io/ExerciseWorks/MultiplicationTable/) 
